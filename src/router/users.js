@@ -1,6 +1,7 @@
 const express = require("express");
 const { userSchema } = require("../utils/joiSchema");
 const { utils } = require("../utils/utils");
+const { generateToken } = require("../security/authentication");
 const { saveUser, fetchUserByEmailId } = require("../dao/users");
 const logger = require("../startup/loggerConfig");
 const bcrypt = require("bcrypt");
@@ -34,9 +35,15 @@ router.post("/login", async (req, res) => {
   if (!authenticationSuccess)
     return res.status(403).send("Invalid Credentials");
 
-  res.send(
-    _.pick(userObj, ["id", "firstName", "lastName", "emailId", "admin"])
-  );
+  const user = _.pick(userObj, [
+    "id",
+    "firstName",
+    "lastName",
+    "emailId",
+    "admin"
+  ]);
+
+  res.cookie("AUTH-TOKEN", generateToken(user)).send(user);
 });
 
 module.exports = router;

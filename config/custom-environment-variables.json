@@ -3,5 +3,6 @@
   "databaseServerName": "movies-rest-api-serverName",
   "databaseName": "movies-rest-api-dbName",
   "databaseUserId": "movies-rest-api-dbUserId",
-  "databasePassword": "movies-rest-api-dbPassword"
+  "databasePassword": "movies-rest-api-dbPassword",
+  "jwtPrivateKey": "movies-rest-api-privateKey"
 }
