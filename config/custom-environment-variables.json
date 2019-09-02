@@ -1,0 +1,7 @@
+{
+  "port": "movies-rest-api-port",
+  "databaseServerName": "movies-rest-api-serverName",
+  "databaseName": "movies-rest-api-dbName",
+  "databaseUserId": "movies-rest-api-dbUserId",
+  "databasePassword": "movies-rest-api-dbPassword"
+}
