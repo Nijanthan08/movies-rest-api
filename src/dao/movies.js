@@ -13,6 +13,7 @@ const getMovies = async () => {
   return result.recordset;
 };
 
+
 const getMovie = async movieId => {
   const result = await new sql.Request()
     .input("movieId", sql.Int, movieId)
