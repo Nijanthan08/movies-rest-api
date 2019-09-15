@@ -1,12 +1,24 @@
 var sql = require("mssql");
 var {
   QUERY_ALL_MOVIES,
+  QUERY_ALL_LANGUAGES,
+  QUERY_ALL_GENRES,
   QUERY_MOVIE_BY_ID,
   insertMovie,
   delMovie,
   updtMovie
 } = require("../utils/query");
 const logger = require("../startup/loggerConfig");
+
+const getLanguages = async () => {
+  const result = await new sql.Request().query(QUERY_ALL_LANGUAGES);
+  return result.recordset;
+};
+
+const getGenres = async () => {
+  const result = await new sql.Request().query(QUERY_ALL_GENRES);
+  return result.recordset;
+};
 
 const getMovies = async () => {
   const result = await new sql.Request().query(QUERY_ALL_MOVIES);
@@ -39,4 +51,12 @@ const updateMovie = async movie => {
   return await getMovie(movie.id);
 };
 
-module.exports = { getMovies, getMovie, saveMovie, deleteMovie, updateMovie };
+module.exports = {
+  getMovies,
+  getMovie,
+  saveMovie,
+  deleteMovie,
+  updateMovie,
+  getLanguages,
+  getGenres
+};

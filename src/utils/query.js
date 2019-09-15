@@ -1,3 +1,7 @@
+const QUERY_ALL_LANGUAGES = "Select * from languages";
+
+const QUERY_ALL_GENRES = "Select * from genres";
+
 const QUERY_ALL_MOVIES = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story, 
                             m.base64Img, r.rating 
                             from Movies m
@@ -49,6 +53,8 @@ const insertReview = review => {
 };
 
 module.exports = {
+  QUERY_ALL_LANGUAGES,
+  QUERY_ALL_GENRES,
   QUERY_ALL_MOVIES,
   QUERY_MOVIE_BY_ID,
   QUERY_REVIEWS_BY_MOVIEID,

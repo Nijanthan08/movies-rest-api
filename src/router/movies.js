@@ -4,7 +4,9 @@ const {
   getMovie,
   saveMovie,
   deleteMovie,
-  updateMovie
+  updateMovie,
+  getLanguages,
+  getGenres
 } = require("../dao/movies");
 const { getReviews, addReview } = require("../dao/reviews");
 const { movieSchema, reviewSchema } = require("../utils/joiSchema");
@@ -12,6 +14,18 @@ const { utils } = require("../utils/utils");
 const logger = require("../startup/loggerConfig");
 const router = express.Router();
 const { authenticate } = require("../security/authentication");
+
+router.get("/languages", async (req, res) => {
+  logger.info("Get all languages...");
+  const movies = await getLanguages();
+  res.send(movies);
+});
+
+router.get("/genres", async (req, res) => {
+  logger.info("Get all genres...");
+  const movies = await getGenres();
+  res.send(movies);
+});
 
 router.get("/", async (req, res) => {
   logger.info("Get all movies...");
