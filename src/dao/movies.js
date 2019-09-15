@@ -13,7 +13,6 @@ const getMovies = async () => {
   return result.recordset;
 };
 
-
 const getMovie = async movieId => {
   const result = await new sql.Request()
     .input("movieId", sql.Int, movieId)
@@ -23,7 +22,7 @@ const getMovie = async movieId => {
 
 const saveMovie = async movie => {
   const insertQuery = insertMovie(movie);
-  logger.debug(insertQuery);
+  //logger.debug(insertQuery);
   await new sql.Request().query(insertQuery);
 };
 

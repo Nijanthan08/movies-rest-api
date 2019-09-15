@@ -17,7 +17,8 @@ const movieSchema = {
   active: Joi.string()
     .min(1)
     .max(1)
-    .required()
+    .required(),
+  base64Img: Joi.string().required()
 };
 
 const userSchema = {

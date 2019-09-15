@@ -2,3 +2,4 @@
 logger.log
 package-lock.json
 sample.json
+/config

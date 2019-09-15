@@ -8,9 +8,7 @@ var dbConfig = {
   database: config.get("databaseName"),
   user: config.get("databaseUserId"),
   password: config.get("databasePassword"),
-  options: {
-    encrypt: true
-  }
+  options: { encrypt: true }
 };
 
 module.exports = sql.connect(dbConfig, err => {

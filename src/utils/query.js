@@ -1,11 +1,12 @@
-const QUERY_ALL_MOVIES = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story, r.rating 
+const QUERY_ALL_MOVIES = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story, 
+                            m.base64Img, r.rating 
                             from Movies m
                             join genres g on m.genreId=g.id
                             join languages l on m.languageId=l.id
                             left join ratings r on m.id=r.movieId where m.active='Y'`;
 
-const QUERY_MOVIE_BY_ID = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story, r.rating,
-                            r.likes, r.dislike
+const QUERY_MOVIE_BY_ID = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story,
+                            m.base64Img, r.rating, r.likes, r.dislike
                             from Movies m
                             join genres g on m.genreId=g.id
                             join languages l on m.languageId=l.id
@@ -15,9 +16,10 @@ const QUERY_MOVIE_BY_ID = `select m.id, m.name, m.releaseYear, g.name genre, l.n
 const QUERY_REVIEWS_BY_MOVIEID = `Select * from reviews where movieId=@movieId`;
 
 const insertMovie = movie => {
-  return `insert into movies(name, releaseYear, genreId, languageId, story, createdBy, active, createdTimestamp, 
-    lastUpdtTimestamp) values('${movie.name}', ${movie.releaseYear}, ${movie.genreId}, ${movie.languageId}, 
-        '${movie.story}', ${movie.createdBy}, '${movie.active}', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`;
+  return `insert into movies(name, releaseYear, genreId, languageId, story, createdBy, active, 
+    createdTimestamp, lastUpdtTimestamp, base64Img) values('${movie.name}', ${movie.releaseYear}, 
+    ${movie.genreId}, ${movie.languageId}, '${movie.story}', ${movie.createdBy}, '${movie.active}', 
+    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '${movie.base64Img}')`;
 };
 
 const delMovie = id => {
@@ -32,7 +34,8 @@ const updtMovie = movie => {
 
 const insertUser = user => {
   return `insert into users(firstName, lastName, emailId, password, admin, active, createdTimestamp) values
-  ('${user.firstName}', '${user.lastName}', '${user.emailId}', '${user.password}', 'N', 'Y', CURRENT_TIMESTAMP)`;
+  ('${user.firstName}', '${user.lastName}', '${user.emailId}', '${user.password}', 'N', 'Y',
+   CURRENT_TIMESTAMP)`;
 };
 
 const selectUser = emailId => {
