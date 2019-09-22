@@ -3,14 +3,14 @@ const QUERY_ALL_LANGUAGES = "Select * from languages";
 const QUERY_ALL_GENRES = "Select * from genres";
 
 const QUERY_ALL_MOVIES = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story, 
-                            m.base64Img, r.rating 
+                            m.base64Img, r.rating, m.createdTimestamp 
                             from Movies m
                             join genres g on m.genreId=g.id
                             join languages l on m.languageId=l.id
                             left join ratings r on m.id=r.movieId where m.active='Y'`;
 
 const QUERY_MOVIE_BY_ID = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story,
-                            m.base64Img, r.rating, r.likes, r.dislike
+                            m.base64Img, r.rating, r.likes, r.dislike, r.createTimestamp
                             from Movies m
                             join genres g on m.genreId=g.id
                             join languages l on m.languageId=l.id

@@ -55,8 +55,8 @@ router.post("/review", async (req, res) => {
   if (error) return res.status(400).send(error.message);
 
   await addReview(req.body);
-  //const movie = await getMovieInfoById(req.body.movieId);
-  res.send("Done");
+  const movie = await getMovieInfoById(req.body.movieId);
+  res.send(movie);
 });
 
 router.delete("/:id", authenticate, async (req, res) => {

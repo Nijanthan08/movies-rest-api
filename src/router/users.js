@@ -17,11 +17,12 @@ router.post("/", async (req, res) => {
   const user = req.body;
   user.password = await utils.encrypt(user.password);
   await saveUser(user);
+  res.send("Done");
 
-  const userObj = await fetchUserByEmailId(user.emailId);
-  res.send(
-    _.pick(userObj, ["id", "firstName", "lastName", "emailId", "admin"])
-  );
+  // const userObj = await fetchUserByEmailId(user.emailId);
+  // res.send(
+  //   _.pick(userObj, ["id", "firstName", "lastName", "emailId", "admin"])
+  // );
 });
 
 router.post("/login", async (req, res) => {
@@ -42,8 +43,8 @@ router.post("/login", async (req, res) => {
     "emailId",
     "admin"
   ]);
-
-  res.cookie("AUTH-TOKEN", generateToken(user)).send(user);
+  user.token = generateToken(user);
+  res.send(user);
 });
 
 module.exports = router;

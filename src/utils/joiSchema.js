@@ -22,7 +22,6 @@ const movieSchema = {
 };
 
 const userSchema = {
-  id: Joi.number().optional(),
   firstName: Joi.string()
     .min(1)
     .max(30)
