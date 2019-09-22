@@ -50,13 +50,13 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/review", async (req, res) => {
-  logger.info("Add Movie");
+  logger.info("Add Review");
   const { error } = utils.validate(req.body, reviewSchema);
   if (error) return res.status(400).send(error.message);
 
   await addReview(req.body);
-  const movie = await getMovieInfoById(req.body.movieId);
-  res.send(movie);
+  //const movie = await getMovieInfoById(req.body.movieId);
+  res.send("Done");
 });
 
 router.delete("/:id", authenticate, async (req, res) => {

@@ -42,7 +42,7 @@ const userSchema = {
 
 const reviewSchema = {
   movieId: Joi.number().required(),
-  createdUserId: Joi.number().optional(),
+  createdUserId: Joi.optional(),
   createdUserName: Joi.string()
     .min(1)
     .max(30)
