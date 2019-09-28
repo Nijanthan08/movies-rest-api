@@ -28,6 +28,9 @@ router.post("/", async (req, res) => {
 router.post("/login", async (req, res) => {
   logger.info("Login user");
   const userObj = await fetchUserByEmailId(req.body.emailId);
+
+  if (!userObj) return res.status(403).send("Invalid Credentials");
+
   const authenticationSuccess = await bcrypt.compare(
     req.body.password,
     userObj.password
@@ -43,7 +46,7 @@ router.post("/login", async (req, res) => {
     "emailId",
     "admin"
   ]);
-  
+
   res.send(generateToken(user));
 });
 

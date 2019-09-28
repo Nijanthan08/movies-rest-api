@@ -4,7 +4,7 @@ const logger = require("../startup/loggerConfig");
 
 const authenticate = (req, res, next) => {
   logger.info("authenticate request..");
-  const authToken = req.header("AUTH-TOKEN");
+  const authToken = req.header("X-AUTH-TOKEN");
   if (!authToken) return res.status(403).send("Token not found");
 
   try {
