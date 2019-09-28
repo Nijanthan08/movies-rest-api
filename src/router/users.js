@@ -43,8 +43,8 @@ router.post("/login", async (req, res) => {
     "emailId",
     "admin"
   ]);
-  user.token = generateToken(user);
-  res.send(user);
+  
+  res.send(generateToken(user));
 });
 
 module.exports = router;
