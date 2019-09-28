@@ -52,6 +52,24 @@ const insertReview = review => {
      '${review.likeMovie}', '${review.comments}', ${review.rating}, CURRENT_TIMESTAMP)`;
 };
 
+const insertRating = (movieId, like) => {
+  if ("Y" === like)
+    return `insert into ratings(movieId, likes, dislike, totalRatings, createTimestamp) 
+            values(${movieId}, 1, 0, 1, CURRENT_TIMESTAMP)`;
+  else
+    return `insert into ratings(movieId, likes, dislike, totalRatings, createTimestamp) 
+            values(${movieId}, 0, 1, 1, CURRENT_TIMESTAMP)`;
+};
+
+const updtRating = (movieId, like) => {
+  if ("Y" === like)
+    return `update ratings set likes = likes + 1, totalRatings = totalRatings + 1 where movieId = ${movieId}`;
+  else
+    return `update ratings set dislike = dislike + 1, totalRatings = totalRatings + 1 where movieId = ${movieId}`;
+};
+
+const QUERY_RATING_BY_MOVIEID = "Select * from ratings where movieId=@movieId";
+
 module.exports = {
   QUERY_ALL_LANGUAGES,
   QUERY_ALL_GENRES,
@@ -63,5 +81,8 @@ module.exports = {
   updtMovie,
   insertUser,
   selectUser,
-  insertReview
+  insertReview,
+  QUERY_RATING_BY_MOVIEID,
+  insertRating,
+  updtRating
 };

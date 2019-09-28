@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
   res.send(movie);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", authenticate, async (req, res) => {
   logger.info("Add Movie");
   const { error } = utils.validate(req.body, movieSchema);
   if (error) return res.status(400).send(error.message);
