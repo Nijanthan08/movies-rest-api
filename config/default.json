@@ -1,1 +1,8 @@
-{}
+{
+  "port": "",
+  "databaseServerName": "",
+  "databaseName": "",
+  "databaseUserId": "",
+  "databasePassword": "",
+  "jwtPrivateKey": ""
+}
