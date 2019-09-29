@@ -13,7 +13,7 @@ const authenticate = (req, res, next) => {
     next();
   } catch (error) {
     logger.error(error);
-    return res.status(403).send("Invalid Token");
+    return res.status(403).send("Please login to continue...");
   }
 };
 
