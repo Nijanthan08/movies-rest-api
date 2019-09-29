@@ -6,7 +6,7 @@ create table movies(id int IDENTITY(1,1), name varchar(40), releaseYear int, gen
 story varchar(200), 
 createdBy int, 
 createdTimestamp datetime, lastUpdtTimestamp datetime, 
-active varchar(1), base64Img varchar(8000));
+active varchar(1), base64Img varchar(MAX));
 
 create table reviews(ID int IDENTITY(1,1), movieId int, createdUserId int, createdUserName varchar(30),
 likeMovie varChar(1), comments varchar(200), rating float, createTimestamp datetime);
