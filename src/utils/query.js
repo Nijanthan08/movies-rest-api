@@ -9,6 +9,14 @@ const QUERY_ALL_MOVIES = `select m.id, m.name, m.releaseYear, g.name genre, l.na
                             join languages l on m.languageId=l.id
                             left join ratings r on m.id=r.movieId where m.active='Y'`;
 
+const QUERY_POPULAR_MOVIES = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story, 
+                              m.base64Img, r.likes, r.dislike, r.rating, r.totalRatings, m.createdTimestamp 
+                              from Movies m
+                              join genres g on m.genreId=g.id
+                              join languages l on m.languageId=l.id
+                              join ratings r on m.id=r.movieId where m.active='Y'
+                              order by r.rating desc`;
+
 const QUERY_MOVIE_BY_ID = `select m.id, m.name, m.releaseYear, g.name genre, l.name language, m.story,
                             m.base64Img, r.rating, r.likes, r.dislike, r.createTimestamp
                             from Movies m
@@ -76,6 +84,7 @@ module.exports = {
   QUERY_ALL_MOVIES,
   QUERY_MOVIE_BY_ID,
   QUERY_REVIEWS_BY_MOVIEID,
+  QUERY_POPULAR_MOVIES,
   insertMovie,
   delMovie,
   updtMovie,

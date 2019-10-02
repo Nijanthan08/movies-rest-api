@@ -4,6 +4,7 @@ var {
   QUERY_ALL_LANGUAGES,
   QUERY_ALL_GENRES,
   QUERY_MOVIE_BY_ID,
+  QUERY_POPULAR_MOVIES,
   insertMovie,
   delMovie,
   updtMovie
@@ -22,6 +23,11 @@ const getGenres = async () => {
 
 const getMovies = async () => {
   const result = await new sql.Request().query(QUERY_ALL_MOVIES);
+  return result.recordset;
+};
+
+const getPopularMovies = async () => {
+  const result = await new sql.Request().query(QUERY_POPULAR_MOVIES);
   return result.recordset;
 };
 
@@ -58,5 +64,6 @@ module.exports = {
   deleteMovie,
   updateMovie,
   getLanguages,
-  getGenres
+  getGenres,
+  getPopularMovies
 };
