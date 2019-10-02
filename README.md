@@ -51,4 +51,8 @@ Please follow the steps mentioned below to host the REST API in your local:
 6. Integrate the REST API to the WEB APP to launch the Movie Review Portal Application. Refer the following repository to setup the WEB APP in your local
 
       https://github.com/Nijanthan08/movies-web-app
+      
+7. A Spring Boot Batch Application is needed for processing User Reviews and update the Database with Top Rated Movies in Real-Time
+
+      https://github.com/Nijanthan08/movies-spring-boot-batch
  
