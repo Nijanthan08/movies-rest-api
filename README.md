@@ -1,7 +1,7 @@
 # movies-rest-api
 REST API build using NODE JS.
 
-REST API for the WEB APP(Movie Review Portal). API host the following services mentioend below:
+REST API for the WEB APP(Movie Review Portal). API host the following services mentioned below:
 
 1. View the list of Movies available from the HTTP service GET : http://localhost:8080/api/movies
 
