@@ -39,9 +39,17 @@ const getMovie = async movieId => {
 };
 
 const saveMovie = async movie => {
-  const insertQuery = insertMovie(movie);
-  //logger.debug(insertQuery);
-  await new sql.Request().query(insertQuery);
+  const request = new sql.Request();
+
+  request.input("name", sql.VarChar, movie.name);
+  request.input("releaseYear", sql.Int, movie.releaseYear);
+  request.input("genreId", sql.Int, movie.genreId);
+  request.input("languageId", sql.Int, movie.languageId);
+  request.input("story", sql.VarChar, movie.story);
+  request.input("createdBy", sql.Int, movie.createdBy);
+  request.input("active", sql.VarChar, movie.active);
+  request.input("base64Img", sql.VarChar, movie.base64Img);
+  await request.query(insertMovie);
 };
 
 const deleteMovie = async id => {

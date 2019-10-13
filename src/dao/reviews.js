@@ -16,8 +16,15 @@ const getReviews = async movieId => {
 };
 
 const addReview = async review => {
-  const query = insertReview(review);
-  await new sql.Request().query(query);
+  const request = new sql.Request();
+  request.input("movieId", sql.Int, review.movieId);
+  request.input("createdUserId", sql.Int, review.createdUserId);
+  request.input("createdUserName", sql.VarChar, review.createdUserName);
+  request.input("likeMovie", sql.VarChar, review.likeMovie);
+  request.input("comments", sql.VarChar, review.comments);
+  request.input("rating", sql.Float, review.rating);
+  await request.query(insertReview);
+
   const ratings = await getRating(review.movieId);
   if (0 === ratings.length) {
     await addRating(review.movieId, review.likeMovie);

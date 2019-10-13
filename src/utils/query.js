@@ -27,12 +27,10 @@ const QUERY_MOVIE_BY_ID = `select m.id, m.name, m.releaseYear, g.name genre, l.n
 
 const QUERY_REVIEWS_BY_MOVIEID = `Select * from reviews where movieId=@movieId`;
 
-const insertMovie = movie => {
-  return `insert into movies(name, releaseYear, genreId, languageId, story, createdBy, active, 
-    createdTimestamp, lastUpdtTimestamp, base64Img) values('${movie.name}', ${movie.releaseYear}, 
-    ${movie.genreId}, ${movie.languageId}, '${movie.story}', ${movie.createdBy}, '${movie.active}', 
-    CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '${movie.base64Img}')`;
-};
+const insertMovie = `insert into movies(name, releaseYear, genreId, languageId, story, createdBy, active, 
+                      createdTimestamp, lastUpdtTimestamp, base64Img) values(@name, @releaseYear, 
+                      @genreId, @languageId, @story, @createdBy, @active, 
+                      CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, @base64Img)`;
 
 const delMovie = id => {
   return `update movies set active='N' where id=${id}`;
@@ -44,21 +42,16 @@ const updtMovie = movie => {
   where id=${movie.id}`;
 };
 
-const insertUser = user => {
-  return `insert into users(firstName, lastName, emailId, password, admin, active, createdTimestamp) values
-  ('${user.firstName}', '${user.lastName}', '${user.emailId}', '${user.password}', 'N', 'Y',
-   CURRENT_TIMESTAMP)`;
-};
+const insertUser = `insert into users(firstName, lastName, emailId, password, admin, active, createdTimestamp) 
+                    values (@firstName, @lastName, @emailId, @password, 'N', 'Y', CURRENT_TIMESTAMP)`;
 
 const selectUser = emailId => {
   return `select * from users where emailId='${emailId}' and active='Y'`;
 };
 
-const insertReview = review => {
-  return `insert into reviews(movieId, createdUserId, createdUserName, likeMovie, comments, rating, 
-    createTimestamp) values(${review.movieId}, ${review.createdUserId}, '${review.createdUserName}',
-     '${review.likeMovie}', '${review.comments}', ${review.rating}, CURRENT_TIMESTAMP)`;
-};
+const insertReview = `insert into reviews(movieId, createdUserId, createdUserName, likeMovie, 
+  comments, rating, createTimestamp) values(@movieId, @createdUserId, @createdUserName, @likeMovie, 
+    @comments, @rating, CURRENT_TIMESTAMP)`;
 
 const insertRating = (movieId, like) => {
   if ("Y" === like)

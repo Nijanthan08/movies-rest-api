@@ -3,9 +3,13 @@ var { insertUser, selectUser } = require("../utils/query");
 const logger = require("../startup/loggerConfig");
 
 const saveUser = async user => {
-  const insertQuery = insertUser(user);
-  logger.debug(insertQuery);
-  await new sql.Request().query(insertQuery);
+  const request = new sql.Request();
+
+  request.input("firstName", sql.VarChar, user.firstName);
+  request.input("lastName", sql.VarChar, user.lastName);
+  request.input("emailId", sql.VarChar, user.emailId);
+  request.input("password", sql.VarChar, user.password);
+  await request.query(insertUser);
 };
 
 const fetchUserByEmailId = async emailId => {
