@@ -14,15 +14,13 @@ router.post("/", async (req, res) => {
   const { error } = utils.validate(req.body, userSchema);
   if (error) return res.status(400).send(error.message);
 
+  const userObj = await fetchUserByEmailId(req.body.emailId);
+  if (userObj) return res.status(400).send("Existing User... Please Login !!!");
+
   const user = req.body;
   user.password = await utils.encrypt(user.password);
   await saveUser(user);
   res.send("Done");
-
-  // const userObj = await fetchUserByEmailId(user.emailId);
-  // res.send(
-  //   _.pick(userObj, ["id", "firstName", "lastName", "emailId", "admin"])
-  // );
 });
 
 router.post("/login", async (req, res) => {
