@@ -5,19 +5,19 @@ REST API for the WEB APP(Movie Review Portal). API host the following services m
 
 1. View the list of Movies available from the HTTP service GET : http://localhost:8080/api/movies
 
-![](/screenshots/Movies.jpg)
+![](/attachments/screenshots/Movies.jpg)
 
 2. Check complete Movie information from the HTTP service GET : http://localhost:8080/api/movies/"movieId"
 
-![](/screenshots/MovieInfo.jpg)
+![](/attachments/screenshots/MovieInfo.jpg)
 
 3. Add Reviews to the movie from the HTTP service POST :  http://localhost:8080/api/movies/review
 
-![](/screenshots/CheckReviews.jpg)
+![](/attachments/screenshots/CheckReviews.jpg)
 
 4. Add a Movie to the portal using the HTTP service POST : http://localhost:8080/api/movies
 
-![](/screenshots/AddMovie.jpg)
+![](/attachments/screenshots/AddMovie.jpg)
 
 Please follow the steps mentioned below to host the REST API in your local:
 
