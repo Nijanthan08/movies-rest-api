@@ -29,10 +29,7 @@ Please follow the steps mentioned below to host the REST API in your local:
     Visual Studio Code: Code Editor (OPTIONAL).
     Download Url : https://code.visualstudio.com/
 	
-2. A SQL Server is essential to for the database operations. Execute the scripts from the attachments folder in the following order mentioned below:
-
-	create scripts.sql <br/>
-	insert scripts.sql
+2. A SQL Server is essential to for the database operations. 
 
 3. Clone the repository to your local and run the following command in the project folder to install the node modules
 
@@ -46,6 +43,11 @@ Please follow the steps mentioned below to host the REST API in your local:
     databaseUserId: SQL Database User ID<br/>
     databasePassword: SQL Database Password<br/>
     jwtPrivateKey: Private key to encrypt the user info at the time of Login<br/>
+    
+    Execute the scripts in the above mentioned Database in the order as below. Please find the scripts in the attachments folder.
+
+	create scripts.sql <br/>
+	insert scripts.sql
   
 5. Run the following command to start the application.
 
